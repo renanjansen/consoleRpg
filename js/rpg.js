@@ -82,6 +82,8 @@ pergunta.innerHTML = "Vamos jogar?";
 
 var resposta = document.getElementById("desejo").value;
 
+     
+
 //funcao para sortear às ações
 function jogaDado() {
 
@@ -112,6 +114,7 @@ function jogaDado() {
 function responder(resposta){
   
   resposta = document.getElementById("desejo").value;
+  
  
      //decide se joga ou não
      switch(resposta){
@@ -125,7 +128,9 @@ function responder(resposta){
     
     break;
     case "N":
-      pergunta.innerHTML = "Que pena, deixa para uma próxima."
+      pergunta.innerHTML = "Que pena, deixa para uma próxima.";
+      
+      break;
   }
 
      //seleção de personagem
