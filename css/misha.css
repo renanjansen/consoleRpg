@@ -1,0 +1,15 @@
+body{
+    background-image: url('https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-repeat: no-repeat;
+    background-size:100% 200%;
+    color:black;
+    
+}
+h1, blockquote{
+    text-align: center;
+    
+}
+p{
+    text-align: left;
+    font-size: x-large;
+}
