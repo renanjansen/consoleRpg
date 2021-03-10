@@ -82,6 +82,8 @@ pergunta.innerHTML = "Vamos jogar?";
 
 var resposta = document.getElementById("desejo").value;
 
+var placar = document.getElementById("placar");
+
      
 
 //funcao para sortear às ações
@@ -129,7 +131,7 @@ function responder(resposta){
     break;
     case "N":
       pergunta.innerHTML = "Que pena, deixa para uma próxima.";
-      
+     placar.innerHTML = "oi" ;
       break;
   }
 
