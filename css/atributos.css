@@ -1,4 +1,4 @@
-.dropbtn {
+.atributos {
     background-color: #3498DB;
     color: white;
     padding: 16px;
@@ -7,8 +7,8 @@
     cursor: pointer;
 }
 
-.dropbtn:hover,
-.dropbtn:focus {
+.atributos:hover,
+.atributos:focus {
     background-color: black;
 }
 
@@ -17,7 +17,7 @@
     display: inline-block;
 }
 
-.dropdown-content {
+.conteudoMenu {
     display: none;
     position: absolute;
     background-color: #e9dfdf;
@@ -26,14 +26,14 @@
     z-index: 1;
 }
 
-.dropdown-content a {
-    color: rgb(238, 134, 64);
+.conteudoMenu a {
+    color: rgb(5, 5, 5);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown-content a:hover {
+.conteudoMenu a:hover {
     background-color: rgb(233, 16, 16)
 }
 
