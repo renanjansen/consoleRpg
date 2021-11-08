@@ -1,52 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link href="css/rpg.css" rel="stylesheet" />
+    <title>RPG</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="css/menu.css" rel="stylesheet">
-  <link href="css/rpg.css" rel="stylesheet">
-  <title>RPG</title>
+  <body class="bg-image" id="fundo">
+    <header id="cabecalho" class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Contexto Rpg</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="historia.html"
+                  >Historia</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="personagens.html">Personagens</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="rpg.html">Jogue Medieval Contexto</a>
+              </li>
 
-</head>
-
-<body>
-  <header id="cabecalho">
-    <button onclick="menu()" class="dropbtn">Menu</button>
-    <div id="myDropdown" class="dropdown-content">
-      <a href="historia.html">História</a>
-      <a href="personagens.html">Jogue Medieval Contexto</a>
-      <a href="sobre_o_jogo.html">Sobre o jogo</a>
-    </div>
-  </header>
- 
-  <dialog open="dialog" id="dialog">
-     <div  class="w3-modal-content w3-animate-zoom">
-    <p id="pergunta"></p>
-    
-    
-    <select name="desejo" id="desejo">
-
-      <option value="S">Sim</option>
-      <option value="N">Não</option>
-      
-    </select>
-     
-    <button onclick="responder()">Responder</button>
-   </div>
-  </dialog>
+              <li class="nav-item">
+                <a class="nav-link" href="sobre_o_jogo.html">Sobre o jogo</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="p-5 mt-5 text-center d-flex justify-content-center" >
+        <div class="card mt-5" style="max-width: 540px" id="dialog">
+          <div class="row g-0 d-flex justify-content-center">
   
+            <div class="col-4">
+              <img src="https://images.pexels.com/photos/3695801/pexels-photo-3695801.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="img-fluid rounded-start" alt="..." id="image"/>
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <p id="pergunta">Vamos jogar ?</p>
+                <select class="form-select" aria-label="Default select example" name="desejo" id="desejo">
+                  
+                  <option value="S">Sim</option>
+                  <option value="N">Não</option>
+                </select>
+              </div>
+              <div class="card-foot">
+                <button onclick="responder()"class="btn btn-info" >Responder</button>
+              </div>
+            </div>
+          </div>
+       
+      </div>
+    </main>
 
-  
-   
-  
-
-
-
-
-</body>
-<script src="js/rpg.js"></script>
-<script src="js/menu.js"></script>
-
-
+    <footer
+      class="bg-trasparent text-center text-lg-start mt-1 shadow fixed-bottom"
+    >
+      <!-- Copyright -->
+      <div class="text-center p-3 text-dark">
+        © 2021 Copyright:
+        <a class="text-dark" href="https://github.com/renanjansen"
+          >Renan Jansen</a
+        >
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </body>
+  <script src="js/rpg.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
 </html>

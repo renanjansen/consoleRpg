@@ -51,7 +51,7 @@ var dado = {
   sorteio: function () {
     result = ""
     escreve.innerHTML = "A sorte está lançada!\nClique 'Ok' para jogar o dado.";
-
+    
     num = Math.floor(Math.random() * 20 + 1);
 
     if (num >= 1 && num <= 5) {
@@ -69,18 +69,21 @@ var dado = {
     }
 
     escreve.innerHTML = "O d20 deu " + num + "\nA ação foi " + result + "\n Clique 'Ok' para continuar";
+    image = "https://www.google.com/imgres?imgurl=https%3A%2F%2Fc.tenor.com%2F0EJ8y8rrW-wAAAAM%2Fdnd-dice-roll.gif&imgrefurl=https%3A%2F%2Ftenor.com%2Fsearch%2Fd20-gifs&tbnid=N92SN6OW9YHy_M&vet=12ahUKEwj2uJ7ptIf0AhVyALkGHWDbAZ8QMygHegQIARBH..i&docid=neWPRN5EvHlxnM&w=220&h=124&q=dado%2020%20gif&ved=2ahUKEwj2uJ7ptIf0AhVyALkGHWDbAZ8QMygHegQIARBH";
+
     return result;
   }
 }
 
 
 
-var pergunta = document.getElementById('pergunta');
+const pergunta = document.getElementById('pergunta');
 
 
 pergunta.innerHTML = "Vamos jogar?";
 
-var resposta = document.getElementById("desejo").value;
+const resposta = document.getElementById("desejo").value;
+const  image = document.getElementById("image");
 
 
 
@@ -91,7 +94,7 @@ function jogaDado() {
 
 
   var num = Math.floor(Math.random() * 20 + 1);
-
+  
   if (num >= 1 && num <= 5) {
 
     result = "crítico";
@@ -101,7 +104,7 @@ function jogaDado() {
 
     result = "acertou";
 
-
+    
   } else {
 
     result = "perfeito";
@@ -142,6 +145,7 @@ function responder(resposta){
       pergunta.innerHTML = "Legal, um mago!"+
       "<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir ";
       desejo.innerHTML = "<option value=>prosseguir</option>";
+      image.src ="https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
       break;
     
     case "2":
@@ -162,6 +166,7 @@ function responder(resposta){
      //início combate 
     case "":
       
+      image.src = "https://images.app.goo.gl/pU4iLCDckEw9nFY8A";
       pergunta.innerHTML = "Oh, não..."+ vilao.nome+ " à vista!"+"<br>"+vilao.nome+ " possui " + vilao.vida+ " pontos de vida! :/ <br>Deseja iniciar um combate?";
       
       desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>"
@@ -186,6 +191,7 @@ function responder(resposta){
      switch(resposta){
        case  "esquivar":
        jogaDado();
+      
        if(result === "acertou"){
          
          desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
