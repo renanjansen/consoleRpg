@@ -8,7 +8,8 @@ var mago = {
   especial: function () {
 
     return this.ataque * 3;
-  }
+  },
+  imagem: "https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
 }
 
 var ladra = {
@@ -43,7 +44,8 @@ var vilao = {
   vida: 30,
   ataque: 22,
   esquiva: 4,
-  defesa: 3
+  defesa: 3, 
+  imagem:"https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg"
 }
 
 var dado = {
@@ -74,6 +76,8 @@ var dado = {
     return result;
   }
 }
+
+
 function trocarImagem(url){
   image.src = url;
   return image.src;
@@ -136,7 +140,10 @@ function responder(resposta){
     
     break;
     case "N":
+      
+      desejo.style.display = "none";
       pergunta.innerHTML = "Que pena, deixa para uma próxima.";
+      trocarImagem("https://i.gifer.com/AHeF.gif");
       
       break;
   }
@@ -148,7 +155,8 @@ function responder(resposta){
       pergunta.innerHTML = "Legal, um mago!"+
       "<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir ";
       desejo.innerHTML = "<option value=>prosseguir</option>";
-      trocarImagem("https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+      //renderiza personagem imagem 
+      trocarImagem(personagem.imagem);
      
       break;
     
@@ -157,6 +165,8 @@ function responder(resposta){
       pergunta.innerHTML = "Legal, uma ladra!"+
       "<br>Você escolheu a " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir  ";
       desejo.innerHTML = "<option value=>prosseguir</option>";
+      
+      trocarImagem(personagem.imagem);
       break;
       
     case "3":
@@ -165,6 +175,8 @@ function responder(resposta){
       pergunta.innerHTML = "Legal, um guerreiro!"+"<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir  ";
         
         desejo.innerHTML = "<option value=>prosseguir</option>";
+        
+      trocarImagem(personagem.imagem);
       break;
       
      //início combate escolha primeira ação
@@ -173,7 +185,8 @@ function responder(resposta){
       
       pergunta.innerHTML = "Oh, não..."+ vilao.nome+ " à vista!"+"<br>"+vilao.nome+ " possui " + vilao.vida+ " pontos de vida! :/ <br>Deseja iniciar um combate?";
       
-      trocarImagem("https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg");
+      //imagem vilão
+      trocarImagem(vilao.imagem);
       
       desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>"
       break;
@@ -183,6 +196,9 @@ function responder(resposta){
      //ataque do vilao, inicio do combate
      switch(resposta){
         case "combate":
+          
+          //imagem Eskeleton
+          trocarImagem(vilao.imagem);
           pergunta.innerHTML ="Ataque do " + vilao.nome+ " escolha sua ação:"; 
           
           desejo.innerHTML = "<option value=esquivar>Esquivar</option><option value=defesa>Defender</option><option value=fugir>Fugir</option>";
@@ -305,6 +321,7 @@ function responder(resposta){
           jogaDado();
           trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
           if(result == "acertou"){
+            //imagem magia
             trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
             desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
 
@@ -340,17 +357,19 @@ function responder(resposta){
       
       switch(resposta){
         case "segueLuta":
-       
           
+       //imagem Eskeketon
+          trocarImagem("https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg");
           pergunta.innerHTML ="Ataque do " + vilao.nome+ " escolha sua ação:"; 
           
           desejo.innerHTML = "<option value=esquivar>Esquivar</option><option value=defesa>Defender</option><option value=fugir>Fugir</option>";
           
           if(personagem.vida <=0 ){
          pergunta.innerHTML = "Fim de jogo ! Você foi derrotado pelo "+vilao.nome;
-          
-          
-       }else if(vilao.vida <=0){
+          }else if(vilao.vida <=0){
+            
+             //mago imagem 
+            trocarImagem("https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
          pergunta.innerHTML= "Parabéns !<br>"+personagem.nome+" venceu o combate!"
        }
           
