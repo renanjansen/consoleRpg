@@ -74,7 +74,10 @@ var dado = {
     return result;
   }
 }
-
+function trocarImagem(url){
+  image.src = url;
+  return image.src;
+}
 
 
 const pergunta = document.getElementById('pergunta');
@@ -145,7 +148,8 @@ function responder(resposta){
       pergunta.innerHTML = "Legal, um mago!"+
       "<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir ";
       desejo.innerHTML = "<option value=>prosseguir</option>";
-      image.src ="https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+      trocarImagem("https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+     
       break;
     
     case "2":
@@ -163,11 +167,13 @@ function responder(resposta){
         desejo.innerHTML = "<option value=>prosseguir</option>";
       break;
       
-     //início combate 
+     //início combate escolha primeira ação
     case "":
       
-      image.src = "https://images.app.goo.gl/pU4iLCDckEw9nFY8A";
+      
       pergunta.innerHTML = "Oh, não..."+ vilao.nome+ " à vista!"+"<br>"+vilao.nome+ " possui " + vilao.vida+ " pontos de vida! :/ <br>Deseja iniciar um combate?";
+      
+      trocarImagem("https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg");
       
       desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>"
       break;
@@ -191,7 +197,7 @@ function responder(resposta){
      switch(resposta){
        case  "esquivar":
        jogaDado();
-      
+      trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
        if(result === "acertou"){
          
          desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
@@ -223,6 +229,7 @@ function responder(resposta){
      switch(resposta){
        case "defesa":
          jogaDado();
+      trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
          if(result === "crítico"){
            
          desejo.innerHTML = "<option value=prosseguir>prosseguir</option>";
@@ -268,6 +275,7 @@ function responder(resposta){
          break;
          case "ataque":
            jogaDado();
+           trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
           if(result == "acertou"){
         
          vilao.vida -= personagem.ataque;
@@ -290,11 +298,14 @@ function responder(resposta){
          vilao.vida = vilao.vida - personagem.especial();
          
          pergunta.innerHTML= "Ataque perfeito!<br>Você atacou o "+vilao.nome+ " com "+personagem.esp+" e causou dano de "+ personagem.especial()+".<br>Seus pontos vitais são de "+personagem.vida+" e os pontos vitais dele agora são de "+ vilao.vida+".<br> Clique 'Prosseguir' para continuar";
+         trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
        }
        break;
         case "especial":
           jogaDado();
+          trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
           if(result == "acertou"){
+            trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
             desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
 
             personagem.vida = personagem.vida-5;
@@ -309,10 +320,10 @@ function responder(resposta){
             perguntar.innerHTML= "Você errou o "+personagem.esp+" seus pontos vitais agora são de "+personagem.vida;
             
           }else{
-            
+            trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
             desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
             //especial perfeito personagem não perde 5 pontos de vida
-
+              
             vilao.vida -= personagem.especial();
             
             pergunta.innerHTML= "Ataque perfeito!<br>Você atacou o "+vilao.nome+ " com "+personagem.esp+" e causou dano de "+ personagem.especial()+"<br>Seus pontos vitais são de "+personagem.vida+" e os pontos vitais dele agora são de "+ vilao.vida+"<br>Clique 'Responder' para continuar";
@@ -325,7 +336,7 @@ function responder(resposta){
        
       }
       
-      //continua o loop do jogo 
+      //continua o loop do jogo precisa ser ajustado
       
       switch(resposta){
         case "segueLuta":
