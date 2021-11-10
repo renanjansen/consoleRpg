@@ -1,75 +1,45 @@
-<!DOCTYPE html>
-<html lang="Pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capa Rpg</title>
-    <link href="css/principal.css" rel="stylesheet" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <header id="cabecalho">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Contexto Rpg</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="historia.html"
-                  >Historia</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="personagens.html">Personagens</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="rpg.html">Jogue Medieval Contexto</a>
-              </li>
+<!DOCTYPE HTML>
 
-              <li class="nav-item">
-                <a class="nav-link" href="sobre_o_jogo.html">Sobre o jogo</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <footer
-      class="bg-trasparent text-center text-lg-start mt-1 shadow fixed-bottom"
-    >
-      <!-- Copyright -->
-      <div class="text-center p-3 text-light">
-        © 2021 Copyright:
-        <a class="text-light" href="https://github.com/renanjansen"
-          >Renan Jansen</a
-        >
-      </div>
-      <!-- Copyright -->
-    </footer>
-  </body>
+<html>
+	<head>
+		<title>Aerial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<div id="bg"></div>
+			<div id="overlay"></div>
+			<div id="main">
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"
-  ></script>
+				<!-- Header -->
+					<header id="header">
+						<h1>Medieval Contexto</h1>
+						<p>Um Rpg de Mesa &nbsp;&bull;&nbsp; Viva aventuras &nbsp;&bull;&nbsp; Salve um reino</p>
+						<nav>
+							<ul>
+								<li><a href="assets/historia.html" class="fa fa-book" aria-hidden="true"><span class="label">História</span></a></li>
+								<li><a href="assets/personagens/personagens.html" class="fa fa-users" aria-hidden="true"><span class="label">Personagens</span></a></li>
+								<li><a href="assets/rpg/rpg.html" class="fa fa-gamepad" aria-hidden="true"><span class="label">Jogue Medieval Contexto</span></a></li>
+								<li><a href="#" class="fa fa-eye" aria-hidden="true"><span class="label">Sobre o jogo</span></a></li>
+							
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<span class="copyright">&copy; Renan Jansen. <a href="#" class="icon brands fa-github"><span class="label">Sobre o jogo</span></a>.</span>
+					</footer>
+
+			</div>
+		</div>
+		<script>
+			window.onload = function() { document.body.classList.remove('is-preload'); }
+			window.ontouchmove = function() { return false; }
+			window.onorientationchange = function() { document.body.scrollTop = 0; }
+		</script>
+	</body>
 </html>
