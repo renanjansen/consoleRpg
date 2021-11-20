@@ -41,7 +41,8 @@ var guerreiro = {
 
     return this.ataque * 1.5;
   },
-  imagem: "https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg",
+  imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgCi8jsEmVqdgzMTL4NoW0g0jwQhbCS5WpUg&usqp=CAU",
+  
   especialImg:"https://i.pinimg.com/originals/86/71/51/8671510553ab7803d802762c01ab736d.gif"
 }
 
@@ -181,9 +182,9 @@ function responder(resposta){
       break;
       
     case "3":
-      
+     personagem = guerreiro; 
       trocarImagem(personagem.imagem);
-      personagem = guerreiro
+      
       pergunta.innerHTML = "Legal, um guerreiro!"+"<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir  ";
         
         desejo.innerHTML = "<option value=>prosseguir</option>";
@@ -355,7 +356,7 @@ function responder(resposta){
           
           if(result == "acertou"){
             //imagem magia
-            trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
+            trocarImagem(personagem.especialImg);
             desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
 
             personagem.vida = personagem.vida-5;
