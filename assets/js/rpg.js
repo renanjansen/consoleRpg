@@ -86,7 +86,7 @@ function trocarImagem(url){
 
 
 const pergunta = document.getElementById('pergunta');
-
+const btn = document.getElementById('btn');
 
 pergunta.innerHTML = "Vamos jogar?";
 
@@ -100,7 +100,7 @@ const  image = document.getElementById("image");
 //funcao para sortear às ações
 function jogaDado() {
 
-
+  trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
   var num = Math.floor(Math.random() * 20 + 1);
   
   if (num >= 1 && num <= 5) {
@@ -141,10 +141,12 @@ function responder(resposta){
     
     break;
     case "N":
-      
+      trocarImagem("https://i.gifer.com/6XdI.gif");
       desejo.style.display = "none";
+      btn.innerText = "Reiniciar";
+      btn.setAttribute('onclick', 'history.go(0)');
       pergunta.innerHTML = "Que pena, deixa para uma próxima.";
-      trocarImagem("https://i.gifer.com/AHeF.gif");
+      
       
       break;
   }
@@ -152,49 +154,55 @@ function responder(resposta){
      //seleção de personagem
      switch(resposta){
      case "1":
-      personagem = mago
+      
+      personagem = mago;
+      trocarImagem(personagem.imagem);
       pergunta.innerHTML = "Legal, um mago!"+
       "<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir ";
       desejo.innerHTML = "<option value=>prosseguir</option>";
       //renderiza personagem imagem 
-      trocarImagem(personagem.imagem);
+      
      
       break;
     
     case "2":
       personagem = ladra;
+      trocarImagem(personagem.imagem);
       pergunta.innerHTML = "Legal, uma ladra!"+
       "<br>Você escolheu a " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir  ";
       desejo.innerHTML = "<option value=>prosseguir</option>";
       
-      trocarImagem(personagem.imagem);
+      
       break;
       
     case "3":
       
+      trocarImagem(personagem.imagem);
       personagem = guerreiro
       pergunta.innerHTML = "Legal, um guerreiro!"+"<br>Você escolheu o " + personagem.nome +" ele possui: "+ personagem.vida+" pontos de vida.<br>Clique no botão 'Responder' para prosseguir  ";
         
         desejo.innerHTML = "<option value=>prosseguir</option>";
         
-      trocarImagem(personagem.imagem);
+      
       break;
       
      //início combate escolha primeira ação
     case "":
       
-      
+      trocarImagem(vilao.imagem);
       pergunta.innerHTML = "Oh, não..."+ vilao.nome+ " à vista!"+"<br>"+vilao.nome+ " possui " + vilao.vida+ " pontos de vida! :/ <br>Deseja iniciar um combate?";
       
       //imagem vilão
-      trocarImagem(vilao.imagem);
+      
       
       desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>"
       break;
       
    }
-      
-     //ataque do vilao, inicio do combate
+   
+     
+    
+       //ataque do vilao, inicio do combate
      switch(resposta){
         case "combate":
           
@@ -206,16 +214,21 @@ function responder(resposta){
         break;
         //escolha por fuga
         case "F":
+          
           trocarImagem("https://i.gifer.com/fxSu.gif");
+          desejo.style.display = "none";
+          btn.innerText = "Reiniciar";
+          btn.setAttribute('onclick', 'history.go(0)');
           pergunta.innerHTML = "Corra fujão!";
+          
           break;
      }
-     
-     //esquiva
+      //esquiva e bloqueio continuacao caso a escolha anterior seja por combate
      switch(resposta){
        case  "esquivar":
+         
        jogaDado();
-      trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
+      
        if(result === "acertou"){
          
          desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
@@ -225,7 +238,7 @@ function responder(resposta){
         //esquiva perfeita
        }else if(result === "perfeito"){
          
-         desejo.innerHTML = "<option value=prosseguir>prosseguir</option>";
+         desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
          
          pergunta.innerHTML ="O dado deu "+result+".<br>Você esquivou do ataque do "+vilao.nome+ " perfeitamente <br>Seus pontos vitais agora são de "+ personagem.vida;
            
@@ -239,18 +252,13 @@ function responder(resposta){
            
            }
            break;
-       }
-       
-       
-       
-     //bloqueio
-     switch(resposta){
-       case "defesa":
+           case "defesa":
+         
          jogaDado();
-      trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
+      
          if(result === "crítico"){
            
-         desejo.innerHTML = "<option value=prosseguir>prosseguir</option>";
+         desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
          
          vilao.ataque  += 10;
          personagem.vida -= vilao.ataque;
@@ -262,7 +270,7 @@ function responder(resposta){
          //bloqueio certo
           }else if(result === "acertou"){
             
-          desejo.innerHTML = "<option value=prosseguir>prosseguir</option>";
+          desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
           
             vilao.ataque -=  personagem.defesa;
             personagem.vida -= vilao.ataque;
@@ -271,29 +279,42 @@ function responder(resposta){
             
             //defesa bem sucedida
              }else{
+                
            desejo.innerHTML = "<option value=prosseguir>Prosseguir</option>";
            
            pergunta.innerHTML ="O dado deu "+result+
            ".<br>Você defendeu o ataque do "+vilao.nome+ " perfeitamente,\nseus pontos vitais agora são de "+ personagem.vida;
           }
           break;
-        //opção de fugir  
+           //opção de fugir  
          case "fugir":
+           trocarImagem("https://i.gifer.com/fxSu.gif");
+          desejo.style.display = "none";
+          btn.innerText = "Reiniciar";
+          btn.setAttribute('onclick', 'history.go(0)');
          pergunta.innerHTML = "Você perdeu!<br>Corra fujão!";
          break;
-      }
-      
-    //ataque do personagem
+       }
+    
+     //ataque do personagem
      switch(resposta){
        
         case "prosseguir":
+          
+        trocarImagem(personagem.imagem);
+        pergunta.innerHTML = "Ataque do " + personagem.nome+ " escolha sua ação:"; 
+        
          desejo.innerHTML = "<option value=ataque>Atacar</option><option value=especial>Especial</option><option value=fugir>Fugir</option>";
          
-         pergunta.innerHTML = "Ataque do " + personagem.nome+ " escolha sua ação:"; 
+         
          break;
-         case "ataque":
+     }
+     
+     switch (resposta) {
+       case "ataque":
+           
            jogaDado();
-           trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
+           
           if(result == "acertou"){
         
          vilao.vida -= personagem.ataque;
@@ -303,25 +324,30 @@ function responder(resposta){
           pergunta.innerHTML = "Você atacou o "+vilao.nome+ " e causou dano de "+ personagem.ataque+" os pontos vitais dele agora são de "+ vilao.vida +".<br>Clique 'Prosseguir' para continuar";
           
           
-       }else if(result == "crítico"){
+          }else if(result == "crítico"){
          
-         desejo.innerHTML = "<option value=segueLuta>private</option>";
+         desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
          
          pergunta.innerHTML = "Ataque mal sucedido.<br>Clique 'Prosseguir' para continuar.";
          
         //ataque perfeito gera ataque especial
-       }else{
-         desejo.innerHTML = "<option value=segueLuta>private</option>";
+          }else{
+         
+         trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
+         desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
 
          vilao.vida = vilao.vida - personagem.especial();
          
+         
          pergunta.innerHTML= "Ataque perfeito!<br>Você atacou o "+vilao.nome+ " com "+personagem.esp+" e causou dano de "+ personagem.especial()+".<br>Seus pontos vitais são de "+personagem.vida+" e os pontos vitais dele agora são de "+ vilao.vida+".<br> Clique 'Prosseguir' para continuar";
-         trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
+         
        }
-       break;
-        case "especial":
+          break;
+         
+       case "especial":
+          
           jogaDado();
-          trocarImagem("https://media2.giphy.com/media/3oriNPdeu2W1aelciY/giphy.gif?cid=6c09b9520088a04a1a01e721b922e1e40fbc20ec808f76bb&rid=giphy.gif&ct=g");
+          
           if(result == "acertou"){
             //imagem magia
             trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
@@ -348,39 +374,63 @@ function responder(resposta){
             pergunta.innerHTML= "Ataque perfeito!<br>Você atacou o "+vilao.nome+ " com "+personagem.esp+" e causou dano de "+ personagem.especial()+"<br>Seus pontos vitais são de "+personagem.vida+" e os pontos vitais dele agora são de "+ vilao.vida+"<br>Clique 'Responder' para continuar";
           }
           break;
+          
           //opção de fuga 
           case "fugir":
+            desejo.style.display = "none";
+            btn.innerText = "Reiniciar";
+            btn.setAttribute('onclick', 'history.go(0)');
             pergunta.innerHTML = "Você perdeu!";
             break;
-       
-      }
+     }
       
-      //continua o loop do jogo precisa ser ajustado
-      
-      switch(resposta){
+    switch(resposta){
         case "segueLuta":
           
-       //imagem Eskeketon
-          trocarImagem("https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg");
+          //imagem Eskeleton
+          trocarImagem(vilao.imagem);
           pergunta.innerHTML ="Ataque do " + vilao.nome+ " escolha sua ação:"; 
           
           desejo.innerHTML = "<option value=esquivar>Esquivar</option><option value=defesa>Defender</option><option value=fugir>Fugir</option>";
+        break;
+        //escolha por fuga
+        case "F":
           
-          if(personagem.vida <=0 ){
-         pergunta.innerHTML = "Fim de jogo ! Você foi derrotado pelo "+vilao.nome;
-          }else if(vilao.vida <=0){
-            
-             //mago imagem 
-            trocarImagem("https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
-         pergunta.innerHTML= "Parabéns !<br>"+personagem.nome+" venceu o combate!"
-       }
+          trocarImagem("https://i.gifer.com/fxSu.gif");
+          desejo.style.display = "none";
+          btn.innerText = "Reiniciar";
+          btn.setAttribute('onclick', 'history.go(0)');
+          pergunta.innerHTML = "Corra fujão!";
           
-         break;
-        
+          break;
+     }
+
+    if (personagem.vida <= 0) {
+      
+      trocarImagem("https://i.gifer.com/6XdI.gif");
+      
+      desejo.style.display = "none";
+      btn.innerText = "Reiniciar";
+      btn.setAttribute('onclick', 'history.go(0)');
+      pergunta.innerHTML = "Fim de jogo! Você perdeu!";
+    }else if(vilao.vida <=0 ){
+      
+      trocarImagem(personagem.imagem);
+      desejo.style.display = "none";
+      btn.innerText = "Reiniciar";
+      btn.setAttribute('onclick', 'history.go(0)');
+      pergunta.innerHTML = personagem.nome+" venceu!";
+    }
+       
       }
+      
+
+     
+      
+     
        
       
-     }
+     
    
 
 
