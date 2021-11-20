@@ -9,7 +9,8 @@ var mago = {
 
     return this.ataque * 3;
   },
-  imagem: "https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+  imagem: "https://images.pexels.com/photos/5701253/pexels-photo-5701253.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+  especialImg: "https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif"
 }
 
 var ladra = {
@@ -24,7 +25,9 @@ var ladra = {
 
     return this.ataque * 2;
   },
-  imagem: 'https://st.depositphotos.com/2458365/3409/i/600/depositphotos_34097931-stock-photo-dark-skinned-girl-warrior.jpg'
+  imagem: 'https://st.depositphotos.com/2458365/3409/i/600/depositphotos_34097931-stock-photo-dark-skinned-girl-warrior.jpg',
+  
+  especialImg: "https://c.tenor.com/P2Ou4PzoxkMAAAAS/dio-knives.gif"
 }
 
 var guerreiro = {
@@ -38,7 +41,8 @@ var guerreiro = {
 
     return this.ataque * 1.5;
   },
-  imagem: "https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg"
+  imagem: "https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg",
+  especialImg:"https://i.pinimg.com/originals/86/71/51/8671510553ab7803d802762c01ab736d.gif"
 }
 
 var vilao = {
@@ -334,7 +338,7 @@ function responder(resposta){
         //ataque perfeito gera ataque especial
           }else{
          
-         trocarImagem("https://i.pinimg.com/originals/2c/bc/c4/2cbcc4cbfb5f3f2005af73b58091d310.gif");
+         trocarImagem(personagem.especialImg);
          desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
 
          vilao.vida = vilao.vida - personagem.especial();
