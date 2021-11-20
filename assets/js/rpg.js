@@ -37,7 +37,8 @@ var guerreiro = {
   especial: function () {
 
     return this.ataque * 1.5;
-  }
+  },
+  imagem: "https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg"
 }
 
 var vilao = {
