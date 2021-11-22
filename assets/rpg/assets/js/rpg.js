@@ -206,7 +206,7 @@ function responder(resposta) {
 
   }
 
-
+ 
 
   //ataque do vilao, inicio do combate
   switch (resposta) {
@@ -399,7 +399,27 @@ function responder(resposta) {
       pergunta.innerHTML = "Ataque do " + vilao.nome + " escolha sua ação:";
 
       desejo.innerHTML = "<option value=esquivar>Esquivar</option><option value=defesa>Defender</option><option value=fugir>Fugir</option>";
+      if (personagem.vida <= 0) {
+
+        trocarImagem("https://i.gifer.com/6XdI.gif");
+    
+        desejo.style.display = "none";
+        btn.innerText = "Reiniciar";
+        btn.setAttribute('onclick', 'history.go(0)');
+        pergunta.innerHTML = "Fim de jogo! Você perdeu!";
+      
+      //daqui sairá a segunda fase do jogo
+      } else if (vilao.vida <= 0) {
+    
+        trocarImagem("https://s5r4g9i5.stackpathcdn.com/wp-content/uploads/2018/02/escrita-shu-mon.jpg.webp");
+       
+        pergunta.innerHTML = personagem.nome + " venceu!<br>Mas sua missão ainda não foi cumprida<br>A morte de "+vilao.nome+" revelou uma nova pista...<br>Um pergaminho com o mapa que revela o paradeiro do mal estrutural<br>Agora cabe a você decidir seu destino.";
+        desejo.innerHTML = "<option value=lerMapa>Ler Mapa</option><option value=seguirInstintos>Seguir Instintos</option><option value=fugir>Fugir</option>";
+      }
       break;
+
+     
+    
     //escolha por fuga
     case "F":
 
@@ -412,21 +432,5 @@ function responder(resposta) {
       break;
   }
 
-  if (personagem.vida <= 0) {
-
-    trocarImagem("https://i.gifer.com/6XdI.gif");
-
-    desejo.style.display = "none";
-    btn.innerText = "Reiniciar";
-    btn.setAttribute('onclick', 'history.go(0)');
-    pergunta.innerHTML = "Fim de jogo! Você perdeu!";
-  } else if (vilao.vida <= 0) {
-
-    trocarImagem(personagem.imagem);
-    desejo.style.display = "none";
-    btn.innerText = "Reiniciar";
-    btn.setAttribute('onclick', 'history.go(0)');
-    pergunta.innerHTML = personagem.nome + " venceu!";
-  }
-
+  
 }
