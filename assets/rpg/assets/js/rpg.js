@@ -55,6 +55,15 @@ var vilao = {
   imagem: "https://pm1.narvii.com/6464/ee1037e29ca76264c3969ad7b8ad1ca0772c61da_hq.jpg"
 }
 
+var leao = {
+  nome: "Leão da Escuridão",
+  vida: 20,
+  ataque: 33,
+  esquiva: 6,
+  defesa: 3,
+  imagem: "https://i.pinimg.com/originals/57/dd/74/57dd74a53f2d539b2d9be6cffa29ee92.gif"
+}
+
 var dado = {
   nome: "dado",
   sorteio: function () {
@@ -431,6 +440,59 @@ function responder(resposta) {
 
       break;
   }
-
+  /*=================================================SEGUNDA FASE===================================================== */
   
+  // decide se lerá o mapa ou seguirá a intuição
+  switch (resposta) {
+    case "lerMapa":
+      trocarImagem("http://pa1.narvii.com/6604/4b4b1ab25d3b18aa67b17c7e47f332fa4243cbf6_00.gif");
+      pergunta.innerHTML="O fim nunca findará respotas na copa da Baobá...";
+      desejo.innerHTML=  "<option value=seguirBaoba>Seguir para a Baoba</option><option value=fugir>Fugir</option>";
+    
+      break;
+
+      case "seguirInstintos":
+        trocarImagem("http://pa1.narvii.com/6604/4b4b1ab25d3b18aa67b17c7e47f332fa4243cbf6_00.gif");
+        pergunta.innerHTML="O fim nunca findará respotas na copa da Baobá...";
+        desejo.innerHTML=  "<option value=seguirInstintos>Seguir seus Instintos</option><option value=fugir>Fugir</option>";
+        
+        break;
+  
+    //escolha por fuga
+    case "F":
+
+      trocarImagem("https://i.gifer.com/fxSu.gif");
+      desejo.style.display = "none";
+      btn.innerText = "Reiniciar";
+      btn.setAttribute('onclick', 'history.go(0)');
+      pergunta.innerHTML = "Corra fujão!";
+
+      break;
+  }
+
+  switch (resposta) {
+    case "seguirBaoba":
+      trocarImagem("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpca4AQh0Tyhb6CKw8znt66DJZKWNsNJR6bA&usqp=CAU");
+      pergunta.innerHTML="Um caminho longo e tortuoso a vista do Baoba é linda! clique em 'Responder' para buscar pistas"
+      desejo.innerHTML = "<option value=>prosseguir</option>";
+      break;
+  
+    case "seguirInstintos":
+      trocarImagem(leao.imagem);
+      pergstunta.innerHTML = "Parece que sua intuição não te levou a um bom destino..." + leao.nome + " à vista!" + "<br>" + leao.nome + " possui " + leao.vida + " pontos de vida! :/ <br>Deseja iniciar um combate?";
+
+      desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>";
+     
+      break;
+       //escolha por fuga
+    case "fugir":
+
+      trocarImagem("https://i.gifer.com/fxSu.gif");
+      desejo.style.display = "none";
+      btn.innerText = "Reiniciar";
+      btn.setAttribute('onclick', 'history.go(0)');
+      pergunta.innerHTML = "Corra fujão!";
+
+      break;
+  }
 }
