@@ -201,7 +201,7 @@ function responder(resposta) {
 
       break;
 
-      //início combate escolha primeira ação
+    //início combate escolha primeira ação
     case "":
 
       trocarImagem(vilao.imagem);
@@ -215,7 +215,7 @@ function responder(resposta) {
 
   }
 
-
+ 
 
   //ataque do vilao, inicio do combate
   switch (resposta) {
@@ -227,7 +227,7 @@ function responder(resposta) {
 
       desejo.innerHTML = "<option value=esquivar>Esquivar</option><option value=defesa>Defender</option><option value=fugir>Fugir</option>";
       break;
-      //escolha por fuga
+    //escolha por fuga
     case "F":
 
       trocarImagem("https://i.gifer.com/fxSu.gif");
@@ -301,7 +301,7 @@ function responder(resposta) {
           ".<br>Você defendeu o ataque do " + vilao.nome + " perfeitamente,\nseus pontos vitais agora são de " + personagem.vida;
       }
       break;
-      //opção de fugir  
+    //opção de fugir  
     case "fugir":
       trocarImagem("https://i.gifer.com/fxSu.gif");
       desejo.style.display = "none";
@@ -380,7 +380,7 @@ function responder(resposta) {
         pergunta.innerHTML = "Você errou o " + personagem.esp + " seus pontos vitais agora são de " + personagem.vida;
 
       } else {
-
+        
         trocarImagem(personagem.especialImg);
         desejo.innerHTML = "<option value=segueLuta>Prosseguir</option>";
         //especial perfeito personagem não perde 5 pontos de vida
@@ -391,7 +391,7 @@ function responder(resposta) {
       }
       break;
 
-      //opção de fuga 
+    //opção de fuga 
     case "fugir":
       desejo.style.display = "none";
       btn.innerText = "Reiniciar";
@@ -411,31 +411,25 @@ function responder(resposta) {
       if (personagem.vida <= 0) {
 
         trocarImagem("https://i.gifer.com/6XdI.gif");
-
+    
         desejo.style.display = "none";
         btn.innerText = "Reiniciar";
         btn.setAttribute('onclick', 'history.go(0)');
         pergunta.innerHTML = "Fim de jogo! Você perdeu!";
-
-        //daqui sairá a segunda fase do jogo
+      
+      //daqui sairá a segunda fase do jogo
       } else if (vilao.vida <= 0) {
-
+    
         trocarImagem("https://s5r4g9i5.stackpathcdn.com/wp-content/uploads/2018/02/escrita-shu-mon.jpg.webp");
-
-        pergunta.innerHTML = personagem.nome + " venceu!<br>Mas sua missão ainda não foi cumprida<br>A morte de " + vilao.nome + " revelou uma nova pista...<br>Um pergaminho com o mapa que revela o paradeiro do mal estrutural<br>Agora cabe a você decidir seu destino.";
+       
+        pergunta.innerHTML = personagem.nome + " venceu!<br>Mas sua missão ainda não foi cumprida<br>A morte de "+vilao.nome+" revelou uma nova pista...<br>Um pergaminho com o mapa que revela o paradeiro do mal estrutural<br>Agora cabe a você decidir seu destino.";
         desejo.innerHTML = "<option value=lerMapa>Ler Mapa</option><option value=seguirInstintos>Seguir Instintos</option><option value=fugir>Fugir</option>";
       }
       break;
 
-<<<<<<< Updated upstream
      
     
     //escolha por fuga
-=======
-
-
-      //escolha por fuga
->>>>>>> Stashed changes
     case "F":
 
       trocarImagem("https://i.gifer.com/fxSu.gif");
@@ -446,41 +440,20 @@ function responder(resposta) {
 
       break;
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
   /*=================================================SEGUNDA FASE===================================================== */
-
+  
   // decide se lerá o mapa ou seguirá a intuição
   switch (resposta) {
     case "lerMapa":
       trocarImagem("http://pa1.narvii.com/6604/4b4b1ab25d3b18aa67b17c7e47f332fa4243cbf6_00.gif");
-      pergunta.innerHTML = "O fim nunca findará respotas na copa da Baobá...";
-      desejo.innerHTML = "<option value=seguirBaoba>Seguir para a Baoba</option><option value=fugir>Fugir</option>";
-
+      pergunta.innerHTML="O fim nunca findará respotas na copa da Baobá...";
+      desejo.innerHTML=  "<option value=seguirBaoba>Seguir para a Baoba</option><option value=fugir>Fugir</option>";
+    
       break;
 
-    case "seguirInstintos":
-      trocarImagem(leao.imagem);
-      pergunta.innerHTML = "Parece que sua intuição não te levou a um bom destino..." + leao.nome + " à vista!" + "<br>" + leao.nome + " possui " + leao.vida + " pontos de vida! :/ <br>Deseja iniciar um combate?";
-
-      desejo.innerHTML = "<option value=combaterLeao>Sim</option><option value=F>Não</option>";
-
-      break;
-
-<<<<<<< Updated upstream
-      case "seguirInstintos":
-        trocarImagem("http://pa1.narvii.com/6604/4b4b1ab25d3b18aa67b17c7e47f332fa4243cbf6_00.gif");
-        pergunta.innerHTML="O fim nunca findará respotas na copa da Baobá...";
-        desejo.innerHTML=  "<option value=seguirInstintos>Seguir seus Instintos</option><option value=fugir>Fugir</option>";
-        
-        break;
+     
   
     //escolha por fuga
-=======
-      //escolha por fuga
->>>>>>> Stashed changes
     case "F":
 
       trocarImagem("https://i.gifer.com/fxSu.gif");
@@ -495,10 +468,9 @@ function responder(resposta) {
   switch (resposta) {
     case "seguirBaoba":
       trocarImagem("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpca4AQh0Tyhb6CKw8znt66DJZKWNsNJR6bA&usqp=CAU");
-      pergunta.innerHTML = "Um caminho longo e tortuoso a vista do Baoba é linda! clique em 'Responder' para buscar pistas"
+      pergunta.innerHTML="Um caminho longo e tortuoso a vista do Baoba é linda! clique em 'Responder' para buscar pistas"
       desejo.innerHTML = "<option value=>prosseguir</option>";
       break;
-<<<<<<< Updated upstream
   
     case "seguirInstintos":
       trocarImagem(leao.imagem);
@@ -508,11 +480,6 @@ function responder(resposta) {
      
       break;
        //escolha por fuga
-=======
-
-
-      //escolha por fuga
->>>>>>> Stashed changes
     case "fugir":
 
       trocarImagem("https://i.gifer.com/fxSu.gif");
@@ -523,8 +490,4 @@ function responder(resposta) {
 
       break;
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
