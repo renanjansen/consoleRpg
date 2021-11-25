@@ -493,3 +493,7 @@ function responder(resposta) {
       break;
   }
 }
+<<<<<<< HEAD:ativos/rpg/ativos/js/rpg.js
+=======
+
+>>>>>>> main:assets/rpg/assets/js/rpg.js
