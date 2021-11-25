@@ -450,7 +450,14 @@ function responder(resposta) {
       desejo.innerHTML=  "<option value=seguirBaoba>Seguir para a Baoba</option><option value=fugir>Fugir</option>";
     
       break;
+      
+      case "seguirInstintos":
+      trocarImagem(leao.imagem);
+      pergunta.innerHTML = "Parece que sua intuição não te levou a um bom destino..." + leao.nome + " à vista!" + "<br>" + leao.nome + " possui " + leao.vida + " pontos de vida! :/ <br>Deseja iniciar um combate?";
 
+      desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>";
+     
+      break;
      
   
     //escolha por fuga
@@ -472,13 +479,7 @@ function responder(resposta) {
       desejo.innerHTML = "<option value=>prosseguir</option>";
       break;
   
-    case "seguirInstintos":
-      trocarImagem(leao.imagem);
-      pergstunta.innerHTML = "Parece que sua intuição não te levou a um bom destino..." + leao.nome + " à vista!" + "<br>" + leao.nome + " possui " + leao.vida + " pontos de vida! :/ <br>Deseja iniciar um combate?";
-
-      desejo.innerHTML = "<option value=combate>Sim</option><option value=F>Não</option>";
-     
-      break;
+    
        //escolha por fuga
     case "fugir":
 
