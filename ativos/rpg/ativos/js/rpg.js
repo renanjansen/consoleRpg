@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 var mago = {
   nome: "Misha",
   vida: 50,
@@ -494,4 +493,4 @@ function responder(resposta) {
       break;
   }
 }
->>>>>>> main
+
